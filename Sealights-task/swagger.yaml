@@ -1,0 +1,129 @@
+openapi: 3.0.0
+info:
+  title: Demo Server API
+  version: 1.0.0
+  description: Demo Server API
+
+paths:
+  /api/persons:
+    get:
+      summary: Get persons
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+
+  /api/person:
+    post:
+      summary: create a person
+      requestBody:
+              required: true
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Person'
+      responses:
+        '201':
+          description: Person created successfully
+        '500':
+          description: Internal server error
+  
+  /api/city:
+    post:
+      summary: add a city
+      requestBody:
+              required: true
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/City'
+      responses:
+        '201':
+          description: City was added successfully
+        '500':
+          description: Internal server error
+
+  /api/cities/{countryId}:
+    get:
+      summary: Get cities by country ID
+      parameters:
+        - in: path
+          name: countryId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+        '500':
+          description: Internal server error
+
+  /api/countries:
+    get:
+      summary: Get countries
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+
+components:
+ schemas:
+    Person:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        birthdate:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+    
+    Address:
+      type: object
+      properties:
+        name: 
+          type: string
+        countrId:
+          type: number
+        cityId:
+          type: number
+        street:
+          type: string
+
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+        name: 
+          type: string
+        countryId:
+          type: number
+
+    Country:
+      type: object
+      properties:
+        id:
+          type: integer
+        name: 
+          type: string
