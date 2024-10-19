@@ -1,0 +1,56 @@
+<div class="form-array address-container">
+  <div *ngFor="let address of formArray.controls; let i = index;" [formGroup]="getAddressFormGroup(i)"
+       class="address-card">
+    <mat-card>
+      <mat-card-title class="address-card-title">Address {{ i + 1 }}</mat-card-title>
+
+      <div class="address-form-fields">
+        <mat-form-field appearance="fill" class="mat-form-field">
+          <mat-label>Address Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter Address Name" required>
+          <mat-error *ngIf="address.get('name')?.invalid && address.get('name')?.touched">
+            Address Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mat-form-field">
+          <mat-label>Street</mat-label>
+          <input matInput formControlName="street" placeholder="Enter Street" required>
+          <mat-error *ngIf="address.get('street')?.invalid && address.get('street')?.touched">
+            Street is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mat-form-field">
+          <mat-label>Country</mat-label>
+          <mat-select (selectionChange)="onCountryChange(i)" formControlName="countryId">
+            <mat-option *ngFor="let country of countries" [value]="country.id">{{ country.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mat-form-field">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="cityId">
+            <mat-option *ngFor="let city of cities$ | async" [value]="city.id">
+              {{ city.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="address-buttons">
+        <button mat-raised-button color="primary" (click)="openAddCityDialog(i)"
+                [disabled]="!address.get('countryId')?.value">
+          Add City
+        </button>
+
+        <button mat-icon-button color="warn" (click)="removeAddress(i)" *ngIf="formArray.length > 1"
+                class="remove-address-btn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <button mat-button (click)="addAddress()" type="button" class="add-address-btn">Add Address</button>
+</div>

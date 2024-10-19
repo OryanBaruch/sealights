@@ -1,0 +1,48 @@
+/* main-form.component.css */
+.main-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-header button {
+  margin-left: auto;
+}
+
+.form-field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-field .mat-form-field {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-field .mat-form-field:last-child {
+  margin-right: 0;
+}
+
+.submit-button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.submit-form {
+  padding: 12px 24px;
+  font-size: 16px;
+}

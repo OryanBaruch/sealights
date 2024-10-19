@@ -1,0 +1,52 @@
+.form-array {
+  padding: 32px
+}
+
+/* add-address.component.css */
+.address-container {
+  margin-top: 30px;
+}
+
+.address-card {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+}
+
+.address-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.address-form-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.address-form-fields .mat-form-field {
+  width: 100%;
+}
+
+.address-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.address-buttons button {
+  padding: 8px 16px;
+}
+
+.add-address-btn {
+  margin-top: 10px;
+}
+
+.remove-address-btn {
+  align-self: flex-start;
+  margin-top: -10px;
+}
+

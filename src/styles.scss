@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .form-field {
+    flex-direction: column;
+  }
+
+  .form-field .mat-form-field {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .address-form-fields {
+    grid-template-columns: 1fr;
+  }
+}

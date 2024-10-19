@@ -1,0 +1,32 @@
+<button mat-raised-button color="primary" [routerLink]="['/list-of-people']" class="persons-list-button">
+  Persons List
+</button>
+
+<form [formGroup]="addPersonForm" class="main-form">
+  <div class="form-header">
+    <mat-form-field appearance="fill" class="mat-form-field">
+      <mat-label>User Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter User Name" required>
+      <mat-error *ngIf="addPersonForm.get('name')?.invalid && addPersonForm.get('name')?.touched">
+        User Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="mat-form-field">
+      <mat-label>Birthdate</mat-label>
+      <input matInput formControlName="birthdate" [matDatepicker]="picker" placeholder="Choose a birthdate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <app-add-address formArrayName="addresses" [formArray]="addresses" [countries]="countries$ | async"
+                   class="address-container"></app-add-address>
+
+  <div class="submit-button">
+    <button (click)="onSubmit()" mat-raised-button color="primary" type="submit" [disabled]="!isFormValid()"
+            class="submit-form">
+      Submit
+    </button>
+  </div>
+</form>

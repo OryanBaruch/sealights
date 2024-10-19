@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Add New City to {{ data.countryName }}</h2>
+<form [formGroup]="addCityForm">
+  <mat-form-field appearance="fill">
+    <mat-label>City Name</mat-label>
+    <input matInput formControlName="cityName" placeholder="Enter City Name" required>
+    <mat-error *ngIf="addCityForm.get('cityName')?.invalid && addCityForm.get('cityName')?.touched">
+      City Name is required
+    </mat-error>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="addCityForm.invalid">Add</button>
+  </div>
+</form>

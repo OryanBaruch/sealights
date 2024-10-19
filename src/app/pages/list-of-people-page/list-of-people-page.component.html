@@ -1,0 +1,13 @@
+<h1>List of people</h1>
+<div class="persons-grid">
+  <ag-grid-angular
+    [class]="'ag-theme-quartz-dark'"
+    [rowData]="personsData$ | async"
+    [columnDefs]="columnDefs"
+    [animateRows]="true"
+    domLayout="autoHeight"
+  />
+</div>
+<button class="add-person" mat-raised-button color="primary" [routerLink]="['/add-person']">
+  Add Person
+</button>
